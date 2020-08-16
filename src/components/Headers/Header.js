@@ -38,7 +38,7 @@ class Header extends React.Component {
                             tag="h1"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Welcome, {this.props.firstName}
+                            Welcome, Jessica!
                           </CardTitle>
                         </div>
                         <Col className="col-auto">
@@ -65,7 +65,7 @@ class Header extends React.Component {
                             Workouts completed!
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            {this.props.workoutCompletion}
+                            5
                           </span>
                         </div>
                         <Col className="col-auto">
@@ -92,7 +92,7 @@ class Header extends React.Component {
                             Workouts left!
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            {this.props.workoutStillNeed}
+                            3
                           </span>
                         </div>
                         <Col className="col-auto">

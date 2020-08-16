@@ -332,7 +332,7 @@ let chartExample1 = {
             content += label;
           }
 
-          content += "$" + yLabel + "k";
+          content += yLabel + " hrs";
           return content;
         }
       }
