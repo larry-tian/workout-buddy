@@ -24,6 +24,12 @@ import {
   CardHeader,
   CardBody,
   Container,
+  Form,
+  FormGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
+  InputGroup,
   Row,
   Col,
   UncontrolledTooltip
@@ -36,19 +42,32 @@ class Icons extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
+          <Container fluid>
+            <div className="header-body">
+              {/* Card stats */}
+            </div>
+          </Container>
+        </div>
         {/* Page content */}
         <Container className=" mt--7" fluid>
           {/* Table */}
           <Row>
-            <div className=" col">
+            <div className="col">
               <Card className=" shadow">
-                <CardHeader className=" bg-transparent">
-                  <h3 className=" mb-0">Icons</h3>
-                </CardHeader>
                 <CardBody>
                   <Row className=" icon-examples">
-
+                    <Col xl="6">
+                    </Col>
+                    <Col xl="6">
+                      <Form className="navbar-search navbar-search-light form-inline ml-4 mt-3 d-none d-md-flex ml-lg-auto">
+                        <FormGroup className="mb-0">
+                          <InputGroup className="input-group-alternative">
+                            <Input placeholder="Search" type="text" />
+                          </InputGroup>
+                        </FormGroup>
+                      </Form>
+                    </Col>
                   {/*<Col lg="3" md="6">
                       <CopyToClipboard
                         text={"active-40"}
