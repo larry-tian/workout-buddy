@@ -47,6 +47,10 @@ import {
   chartExample2
 } from "variables/charts.js";
 
+// import firebase
+import firebase from 'firebase/app';
+import 'firebase/database';
+
 import Header from "components/Headers/Header.js";
 
 class Index extends React.Component {
@@ -55,11 +59,20 @@ class Index extends React.Component {
     this.state = {
       activeNav: 1,
       chartExample1Data: "data1"
+      // userID: "Unknown",
+      // firstName: "Unknown",
+      // lastName: "Unknown",
+      // age: "Unknown",
+      // gender: "Unknown",
+      // workoutCompletion: 0,
+      // workoutStillNeed: 0,
+      // lastWorkout: "Unknown"
     };
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
   }
+
   toggleNavs = (e, index) => {
     e.preventDefault();
     this.setState({
@@ -68,6 +81,8 @@ class Index extends React.Component {
         this.state.chartExample1Data === "data1" ? "data2" : "data1"
     });
   };
+
+
   render() {
     return (
       <>
