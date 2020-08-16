@@ -3,6 +3,12 @@ import './App.css';
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import {
+  Col,
+  Card,
+  Button,
+  CardBody
+} from "reactstrap";
 
 const Container = styled.div`
   height: 100vh;
@@ -118,7 +124,7 @@ function App() {
   let UserVideo;
   if (stream) {
     UserVideo = (
-      <Video playsInline muted ref={userVideo} autoPlay />
+      <Video className="m-auto" playsInline muted ref={userVideo} autoPlay />
     );
   }
 
@@ -140,22 +146,50 @@ function App() {
   }
   return (
     <Container>
+        <div className="header bg-gradient-info pb-2 pt-5 pt-8">
+            <div className="header-body">
+              {/* Card stats */}
+            </div>
+       </div>
       <Row>
-        {UserVideo}
-        {PartnerVideo}
-      </Row>
-      <Row>
-        {Object.keys(users).map(key => {
-          if (key === yourID) {
-            return null;
-          }
-          return (
-            <button onClick={() => callPeer(key)}>Call {key}</button>
-          );
-        })}
-      </Row>
-      <Row>
-        {incomingCall}
+        <Col xl="7">
+          <Row>
+            {UserVideo}
+            {PartnerVideo}
+          </Row>
+          <Row>
+            <Video className="m-3" playsInline muted ref={userVideo} autoPlay />
+            <Video className="m-3" playsInline muted ref={userVideo} autoPlay />
+          </Row>
+          <Row>
+            {Object.keys(users).map(key => {
+              if (key === yourID) {
+                return null;
+              }
+              return (
+                <button onClick={() => callPeer(key)}>Call {key}</button>
+              );
+            })}
+          </Row>
+          <Row>
+            {incomingCall}
+          </Row>
+        </Col>
+        <Col xl="7">
+            <Card>
+              <CardBody style={{maxWidth: `100vw`}}>
+                <Row>
+                <iframe className="ml-5 mb-4" width="560" height="315" src="https://www.youtube.com/embed/GLy2rYHwUqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </Row>
+                <Row className="">
+                  <Button>Stopwatch</Button>
+                  <Button>Timer</Button>
+                </Row>
+                <p>2:00</p>
+                <Button></Button>
+              </CardBody>
+            </Card>
+        </Col>
       </Row>
     </Container>
   );
