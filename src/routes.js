@@ -30,14 +30,14 @@ var routes = [
   },
   {
     path: "/icons",
-    name: "Icons",
+    name: "Search",
     icon: "ni ni-planet text-blue",
     component: Icons,
     layout: "/admin"
   },
   {
     path: "/user-profile",
-    name: "User Profile",
+    name: "Virtual Workout",
     icon: "ni ni-single-02 text-yellow",
     component: Profile,
     layout: "/admin"
