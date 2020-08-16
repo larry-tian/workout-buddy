@@ -90,26 +90,22 @@ class Index extends React.Component {
         <Header />
         {/* Page content */}
         <Container className="mt--7" fluid>
-          <Row>
+          <Row className=".mh-100">
             <Col xl="8">
-              <Row>
+              <Row className="align-items-center">
                 <Col xl="8">
-                <Card className="shadow p-3">
-                  <Row>
-                    <Col><CardTitle>Abs Workout</CardTitle></Col>
-                    <Col><p>Progress bar</p></Col>
-                    <Col><Button></Button></Col>
+                <Card className="shadow p-3 ">
+                  <Row className="justify-content-center">
+                    <Col><i className="fas fa-dumbbell fa-3x ml-4" /></Col>
+                    <Col ><p>Arms Workout</p></Col>
+                    <Col><p>Progress: 40%</p></Col>
+                    <Col><Button>Continue</Button></Col>
                   </Row>
                 </Card>
                 </Col>
                 <Col xl="4">
-                  <Button></Button>
-                  <Button></Button>
+                  <Button className="ml-4">Host Workout</Button>
                 </Col>
-              </Row>
-              <Row className="mt-5 ml-1">
-                <Button className="bigbutton"></Button>
-                <Button className="bigbutton"></Button>
               </Row>
               <Row>
                 <Plan/>
@@ -123,7 +119,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-light ls-1 mb-1">
                         Overview
                       </h6>
-                      <h2 className="text-white mb-0">Sales value</h2>
+                      <h2 className="text-white mb-0">Workout Hours</h2>
                     </div>
                     <div className="col">
                       <Nav className="justify-content-end" pills>
@@ -135,7 +131,7 @@ class Index extends React.Component {
                             href="#pablo"
                             onClick={e => this.toggleNavs(e, 1)}
                           >
-                            <span className="d-none d-md-block">Month</span>
+                            <span className="d-none d-md-block">By Week</span>
                             <span className="d-md-none">M</span>
                           </NavLink>
                         </NavItem>

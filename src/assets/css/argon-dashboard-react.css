@@ -620,6 +620,10 @@ pre {
 .order-12 {
   order: 12; }
 
+.offset {
+  margin-left: 8%;
+}
+
 .offset-1 {
   margin-left: 8.33333%; }
 
@@ -5538,6 +5542,10 @@ button.bg-darker:focus {
 
 .w-auto {
   width: auto !important; }
+
+.h-px {
+  height: 400px !important;
+}
 
 .h-25 {
   height: 25% !important; }

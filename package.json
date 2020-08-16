@@ -60,7 +60,10 @@
     "react-google-maps": "9.4.5",
     "react-router-dom": "5.1.2",
     "react-scripts": "^3.4.3",
-    "reactstrap": "8.4.1"
+    "reactstrap": "8.4.1",
+    "simple-peer": "^9.7.2",
+    "socket.io-client": "^2.3.0",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@types/googlemaps": "3.39.2",

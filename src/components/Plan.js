@@ -11,23 +11,23 @@ class Plan extends React.Component {
     ]
     return (
       <Container fluid>
-        <Row className="m-3"><h2>This Week's Plan</h2></Row>
+        <Row className="mt-5 mb-3"><h1>This Week's Plan</h1></Row>
         <Row className="mb-3">
           {days.map(day => (
             <Col><Button>{day}</Button></Col>
           ))}
         </Row>
-        <Row>
+        <Row className="mh-100">
           {workouts.map(workout => (
             <Col key={workout.title}>
-              <Card className=".h-50">
+              <Card className="h-px">
                 <CardTitle className="text-left m-3">
                   {workout.title}
                 </CardTitle>
                 <CardBody>
-                  {workout.type}
-                  {workout.duration}
-                  <Button>Start</Button>
+                  <p>{workout.type}</p>
+                  <p>{workout.duration}</p>
+                  <Button className="m-5">Start</Button>
                 </CardBody>
               </Card>
             </Col>
