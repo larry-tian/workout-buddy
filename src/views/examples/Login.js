@@ -15,131 +15,118 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react'; 
+import firebase from 'firebase/app';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
   Col
 } from "reactstrap";
 
 class Login extends React.Component {
+    constructor(props){
+      super(props)
+      this.state = {
+          user: null
+      };
+    }
+
+  // Configure Firebase UI (inside the component, public class field)
+  uiConfig = {
+      signInOptions: [
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID
+      ],
+      // for external sign-in methods, use popup instead of redirect
+      signInFlow: "popup"
+  };
+
+  enterUser = (user) => {
+      this.setState((currentState) => {
+        currentState.user = user.replace(/[^a-zA-Z0-9]/g, "");
+        return currentState;
+      })
+  }
+
+  componentDidMount() {
+
+      this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+          if (firebaseUser) {         // If exists, then we logged in
+              this.setState({ user: firebaseUser });
+              this.enterUser(this.state.user.email)
+          } else {
+              this.setState({ user: null })
+          }
+      })
+  }
+
+  componentWillUnmount() {
+      this.authUnSubFunction(); // stop listening for auth changes
+  }
+
+  handleSignOut = () => {
+      this.setState({ errorMessage:null }); //clear old error
+
+      firebase.auth().signOut()
+      .catch((err) => {
+          this.setState({errorMessage: err.message})
+      })
+      this.enterUser("");
+  }
+
+  handleChange = (event) => {
+      let field = event.target.name;  //which input
+      let value = event.target.value; //what value
+
+      let changes = {}; //object to hold changes
+      changes[field] = value;
+      this.setState(changes);
+  }
   render() {
+    let content = null;
+    if(!this.state.user) { //signed out
+        content = (
+            <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+        )
+    } else {
+        content = (
+            <div>
+                <section>
+                    <div className="alert alert-success">
+                        <h3 className="ml-3">Logged in successfully </h3>
+                    </div>
+
+                    <button className="btn btn-warning" onClick={this.handleSignOut}>
+                        Sign Out
+                    </button>
+
+                </section>
+            </div>
+        )
+    }
     return (
       <>
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
             <CardHeader className="bg-transparent pb-5">
-              <div className="text-muted text-center mt-2 mb-3">
-                <small>Sign in with</small>
-              </div>
               <div className="btn-wrapper text-center">
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="#pablo"
-                  onClick={e => e.preventDefault()}
-                >
-                  <span className="btn-inner--icon">
-                    <img
-                      alt="..."
-                      src={require("assets/img/icons/common/github.svg")}
-                    />
-                  </span>
-                  <span className="btn-inner--text">Github</span>
-                </Button>
-                <Button
-                  className="btn-neutral btn-icon"
-                  color="default"
-                  href="#pablo"
-                  onClick={e => e.preventDefault()}
-                >
-                  <span className="btn-inner--icon">
-                    <img
-                      alt="..."
-                      src={require("assets/img/icons/common/google.svg")}
-                    />
-                  </span>
-                  <span className="btn-inner--text">Google</span>
-                </Button>
+
+                    <h2 className="scheduleTitleTop">Log In</h2>
+                    <section>
+                        {/* only included if first clause is true */}
+                        {this.state.errorMessage &&
+                            <p className="alert alert-danger">{this.state.errorMessage}</p>
+                        }
+                
+                        {/* show content based on user login state */}
+                        {content}
+                    </section>
               </div>
             </CardHeader>
-            <CardBody className="px-lg-5 py-lg-5">
-              <div className="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
-              </div>
-              <Form role="form">
-                <FormGroup className="mb-3">
-                  <InputGroup className="input-group-alternative">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-email-83" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input placeholder="Email" type="email" autoComplete="new-email"/>
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup className="input-group-alternative">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-lock-circle-open" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input placeholder="Password" type="password" autoComplete="new-password"/>
-                  </InputGroup>
-                </FormGroup>
-                <div className="custom-control custom-control-alternative custom-checkbox">
-                  <input
-                    className="custom-control-input"
-                    id=" customCheckLogin"
-                    type="checkbox"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor=" customCheckLogin"
-                  >
-                    <span className="text-muted">Remember me</span>
-                  </label>
-                </div>
-                <div className="text-center">
-                  <Button className="my-4" color="primary" type="button">
-                    Sign in
-                  </Button>
-                </div>
-              </Form>
-            </CardBody>
           </Card>
-          <Row className="mt-3">
-            <Col xs="6">
-              <a
-                className="text-light"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <small>Forgot password?</small>
-              </a>
-            </Col>
-            <Col className="text-right" xs="6">
-              <a
-                className="text-light"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <small>Create new account</small>
-              </a>
-            </Col>
-          </Row>
         </Col>
       </>
     );

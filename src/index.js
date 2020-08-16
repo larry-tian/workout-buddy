@@ -23,8 +23,27 @@ import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
 
+// Firebase
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/analytics';
+
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBrbhlGi66o5ngxGI0gQYdX0OKGMKc6Qvc",
+    authDomain: "workout-buddy-fa7c9.firebaseapp.com",
+    databaseURL: "https://workout-buddy-fa7c9.firebaseio.com",
+    projectId: "workout-buddy-fa7c9",
+    storageBucket: "workout-buddy-fa7c9.appspot.com",
+    messagingSenderId: "597544238607",
+    appId: "1:597544238607:web:2c464524646aca27636d7a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <BrowserRouter>
