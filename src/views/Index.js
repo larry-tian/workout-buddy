@@ -78,7 +78,7 @@ class Index extends React.Component {
             <Col xl="8">
               <Row>
                 <Col xl="8">
-                <Card className="shadow">
+                <Card className="shadow p-3">
                   <Row>
                     <Col><CardTitle>Abs Workout</CardTitle></Col>
                     <Col><p>Progress bar</p></Col>
@@ -91,7 +91,7 @@ class Index extends React.Component {
                   <Button></Button>
                 </Col>
               </Row>
-              <Row>
+              <Row className="mt-5 ml-1">
                 <Button className="bigbutton"></Button>
                 <Button className="bigbutton"></Button>
               </Row>
