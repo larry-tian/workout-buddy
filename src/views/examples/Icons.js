@@ -48,7 +48,8 @@ class Icons extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <Row className=" icon-examples">
-                    <Col lg="3" md="6">
+
+                  {/*<Col lg="3" md="6">
                       <CopyToClipboard
                         text={"active-40"}
                         onCopy={() =>
@@ -2887,7 +2888,7 @@ class Icons extends React.Component {
                           ? "Copied"
                           : "Copy To Clipbord"}
                       </UncontrolledTooltip>
-                    </Col>
+                    </Col>*/}
                   </Row>
                 </CardBody>
               </Card>
