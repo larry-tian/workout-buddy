@@ -121,7 +121,7 @@ class Login extends React.Component {
                             <p className="alert alert-danger">{this.state.errorMessage}</p>
                         }
                 
-                        {/* show content based on user login state */}
+                        {/* show content based on our login state */}
                         {content}
                     </section>
               </div>
