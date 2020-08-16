@@ -51,6 +51,7 @@ import {
 import firebase from 'firebase/app';
 import 'firebase/database';
 
+import Plan from "components/Plan";
 import Header from "components/Headers/Header.js";
 
 class Index extends React.Component {
@@ -110,7 +111,9 @@ class Index extends React.Component {
                 <Button className="bigbutton"></Button>
                 <Button className="bigbutton"></Button>
               </Row>
-              <Row></Row>
+              <Row>
+                <Plan/>
+              </Row>
             </Col>
             <Col className="mb-5 mb-xl-0" xl="4">
               <Card className="bg-gradient-default shadow">
