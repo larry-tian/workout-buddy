@@ -23,7 +23,6 @@ const Row = styled.div`
 `;
 
 const Video = styled.video`
-  border: 1px solid blue;
   width: 50%;
   height: 50%;
 `;
@@ -153,6 +152,9 @@ function App() {
        </div>
       <Row>
         <Col xl="7">
+          <Row className="mt-3 ml-2 mb-2">
+            <h1>Your personal workout room</h1>
+          </Row>
           <Row>
             {UserVideo}
             {PartnerVideo}
@@ -174,23 +176,38 @@ function App() {
           <Row>
             {incomingCall}
           </Row>
+          <Row>
+            <Col>
+              <p className="text-centered">Waiting for the other people to join...</p>
+            </Col>
+            <Col>
+              <Button color="info">Disconnect</Button>
+              <Button color="danger">Mute</Button>
+            </Col>
+          </Row>
         </Col>
-        <Col xl="7">
-            <Card>
+        <Col xl="5">
+            <Card className="mt-2">
               <CardBody style={{maxWidth: `100vw`}}>
+                <Row className="mt-3 ml-2 mb-2">
+                  <p>Today's workout instructions</p>
+                </Row>
                 <Row>
                 <iframe className="ml-5 mb-4" width="560" height="315" src="https://www.youtube.com/embed/GLy2rYHwUqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </Row>
-                <Row className="">
-                  <Button>Stopwatch</Button>
-                  <Button>Timer</Button>
-                </Row>
-                <p>2:00</p>
-                <Button></Button>
+
+
               </CardBody>
+            </Card>
+            <Card className = "mt-2">
+              <Row className="mt-3 ml-4 mb-2">
+                <h2>Remaining Time:</h2>
+                <p className="ml-3">24 minutes</p>
+              </Row>
             </Card>
         </Col>
       </Row>
+
     </Container>
   );
 }
