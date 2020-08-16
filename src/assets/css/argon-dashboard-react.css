@@ -9237,6 +9237,11 @@ button.section-darker:focus {
 .floatfix:after {
   clear: both; }
 
+.img {
+  height: 50px;
+  width:50px;
+}
+
 .img-center {
   display: block;
   margin-left: auto;
@@ -14342,3 +14347,4 @@ button:focus, :focus {
 
 .table .badge i {
   margin-right: 10px; }
+

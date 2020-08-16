@@ -80,16 +80,6 @@ class AdminNavbar extends React.Component {
                     to="/auth/register"
                     tag={Link}
                   >
-                    <i className="ni ni-circle-08" />
-                    <span className="nav-link-inner--text">Register</span>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className="nav-link-icon"
-                    to="/auth/login"
-                    tag={Link}
-                  >
                     <i className="ni ni-key-25" />
                     <span className="nav-link-inner--text">Login</span>
                   </NavLink>
@@ -101,7 +91,7 @@ class AdminNavbar extends React.Component {
                     tag={Link}
                   >
                     <i className="ni ni-single-02" />
-                    <span className="nav-link-inner--text">Profile</span>
+                    <span className="nav-link-inner--text">Virtual Workout</span>
                   </NavLink>
                 </NavItem>
               </Nav>

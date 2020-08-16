@@ -42,9 +42,12 @@ class Header extends React.Component {
                           </CardTitle>
                         </div>
                         <Col className="col-auto">
-                          <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                            <i className="fas fa-chart-bar" />
-                          </div>
+                        <span className="avatar">
+                          <img
+                            alt="..."
+                            src={require("assets/img/theme/team-4-800x800.jpg")}
+                          />
+                        </span>
                         </Col>
                       </Row>
                       <p className="mt-3 mb-0 text-muted text-sm">
