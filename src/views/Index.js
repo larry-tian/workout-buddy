@@ -43,8 +43,7 @@ import {
 import {
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2
+  chartExample1
 } from "variables/charts.js";
 
 // import firebase
@@ -59,7 +58,9 @@ class Index extends React.Component {
     super(props);
     this.state = {
       activeNav: 1,
-      chartExample1Data: "data1"
+      chartExample1Data: "data1",
+      exercise: "",
+      hostWorkout: false
       // userID: "Unknown",
       // firstName: "Unknown",
       // lastName: "Unknown",
@@ -83,8 +84,38 @@ class Index extends React.Component {
     });
   };
 
+  enterExercise = () => {
+    this.setState((currentState) => {
+      currentState.exercise = "Arms Workout";
+      return currentState;
+    })
+  }
+
+  enterHost = () => {
+    this.setState((currentState) => {
+      currentState.hostWorkout = true;
+      return currentState;
+    })
+  }
 
   render() {
+        let selectedExercise;
+        // This will display what user has selected
+        if (this.state.exercise === undefined | this.state.exercise=== "") {
+            selectedExercise = <p></p>;
+        } else {
+            selectedExercise = 
+            <p>You have selected <strong className="streaks">{this.state.exercise}</strong>!</p>
+        }
+
+        let selectedHost;
+        // This will display what user has selected
+        if (this.state.hostWorkout === false) {
+            selectedHost = <p></p>;
+        } else {
+            selectedHost = 
+            <p>Your meeting has been set up</p>;
+        }
     return (
       <>
         <Header />
@@ -94,17 +125,19 @@ class Index extends React.Component {
             <Col xl="8">
               <Row className="align-items-center">
                 <Col xl="8">
+                  {selectedExercise}
                 <Card className="shadow p-3 ">
                   <Row className="justify-content-center">
                     <Col><i className="fas fa-dumbbell fa-3x ml-4" /></Col>
                     <Col ><p>Arms Workout</p></Col>
                     <Col><p>Progress: 40%</p></Col>
-                    <Col><Button>Continue</Button></Col>
+                    <Col><Button onClick={this.enterExercise}>Continue</Button></Col>
                   </Row>
                 </Card>
                 </Col>
                 <Col xl="4">
-                  <Button className="ml-4">Host Workout</Button>
+                  {selectedHost}
+                  <Button className="ml-4" onClick={this.enterHost}>Host Workout</Button>
                 </Col>
               </Row>
               <Row>
@@ -131,7 +164,7 @@ class Index extends React.Component {
                             href="#pablo"
                             onClick={e => this.toggleNavs(e, 1)}
                           >
-                            <span className="d-none d-md-block">By Week</span>
+                            <span className="d-none d-md-block">Change View</span>
                             <span className="d-md-none">M</span>
                           </NavLink>
                         </NavItem>

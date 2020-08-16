@@ -7,6 +7,27 @@ import Rock from "../assets/img/theme/rock.jpg";
 
 import { Card, CardBody, CardTitle, Container, Row, Col, Button } from "reactstrap";
 class Plan extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      selectedDate: false,
+      selectedWorkout: false
+    };
+  }
+
+  enterDate = () => {
+    this.setState((currentState) => {
+      currentState.selectedDate = true;
+      return currentState;
+    })
+  }
+
+  enterWorkout = () => {
+    this.setState((currentState) => {
+      currentState.selectedWorkout = true;
+      return currentState;
+    })
+  }
   render() {
     const days = ["mon", "tues", "wed", "thurs", "fri", "sat", "sun"];
     const workouts = [
@@ -15,12 +36,29 @@ class Plan extends React.Component {
       {title: "Planks", type: "Group workout", duration: "1 min", img: Plank},
       {title: "Mountain Climing", type: "Group workout", duration: "2 min", img: Rock},
     ]
+
+
+    let selectedWork;
+    // This will display what user has selected
+    if (this.state.selectedDate === false) {
+      selectedWork = <p></p>
+    } else if (this.state.selectedDate === true && this.state.selectedWorkout === false) {
+        selectedWork = 
+        <p>Please select a workout</p>
+    } else if (this.state.selectedDate === false && this.state.selectedWorkout === true) {
+        selectedWork = 
+        <p>Please select a date</p>
+    } else {
+        selectedWork =
+        <p>Your plan has been updated!</p>
+    }
     return (
       <Container fluid>
         <Row className="mt-5 mb-3"><h1>This Week's Plan</h1></Row>
+        {selectedWork}
         <Row className="mb-3">
           {days.map(day => (
-            <Col><Button className="mb-3">{day}</Button></Col>
+            <Col><Button className="mb-3" onClick={this.enterDate}>{day}</Button></Col>
           ))}
         </Row>
         <Row className="mh-100">
@@ -51,7 +89,7 @@ class Plan extends React.Component {
                 >
                   <p>{workout.type}</p>
                   <p>{workout.duration}</p>
-                  <Button className="m-5">Start</Button>
+                  <Button className="m-5" onClick={this.enterWorkout}>Start</Button>
                 </CardBody>
               </Card>
             </Col>
